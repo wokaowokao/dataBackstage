@@ -1,0 +1,49 @@
+{include file="Import/importResultHead" /}
+<body>
+{php}
+
+    $lala = '[{"treeName":"啦啦啦","updateArr":[{"date":"2016-09-07","name":"ALA9\u6708\u8d4f\u91d1\u5b63","zt_id":"4768053269","type":"\u666e\u901a\u7248","pv":"25","uv":"19","login":"3","reply_n":"0","reply_n2":"0","send_n":"0","send_n2":"9120"}],"updateNum":1,"insertArr":[],"insertNum":0},{"treeName":"的方式地方","updateArr":[{"date":"2016-09-07","name":"ALA9\u6708\u8d4f\u91d1\u5b63","zt_id":"4768053269","type":"\u666e\u901a\u7248","pv":"25","uv":"19","login":"3","reply_n":"0","reply_n2":"0","send_n":"0","send_n2":"9120"}],"updateNum":1,"insertArr":[],"insertNum":0}]';
+    $returnArr = json_decode($returnJson,true);
+    //var_dump($returnArr);
+    foreach($returnArr as $key => $value){
+{/php}
+    <div class="tableHead">{php}echo $value['treeName']; {/php}</div>
+    <table class="table table-bordered">
+        <caption>更新数据(<span class="num">{php}echo $value['updateNum']; {/php}</span>)条</caption>
+        <tbody>
+        {php}
+        $updateHtml = '';
+        foreach ($value['updateArr'] as $uk => $uv) {
+            $updateHtml = '<tr>';
+            if($uv){
+                foreach($uv as $k => $v){
+                    $updateHtml .= '<td>'.$v.'</td>';
+                }
+            }
+            $updateHtml .= '</tr>';
+            echo $updateHtml;
+        }
+        {/php}
+        </tbody>
+    </table>
+        <table class="table table-bordered">
+        <caption>插入数据(<span class="num">{php}echo $value['insertNum']; {/php}</span>)条</caption>
+        <tbody>
+        {php}
+        $insertHtml = '';
+        foreach ($value['insertArr'] as $ik => $iv) {
+            $insertHtml = '<tr>';
+            if($iv){
+                foreach($iv as $k => $v){
+                    $insertHtml .= '<td>'.$v.'</td>';
+                }
+            }
+            $insertHtml .= '</tr>';
+            echo $insertHtml;
+        }
+        {/php}
+        </tbody>
+    </table>
+{php}}{/php}
+</body>
+</html>

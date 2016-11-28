@@ -1,0 +1,58 @@
+
+<div id="tree" data-options="region:'west'" title="" style="width:300px;">
+</div>
+<style type="text/css">
+	#tree{
+		width:250px !important;
+	}
+	#tree_header{
+		height: 23px;
+		background:#438eb9;
+		color: #fff;
+		margin-bottom: 8px;
+	}
+</style>
+<script type="text/javascript">
+	//tree存储 名称方法关联  lefttree存储名称
+	var jsonData = {php}echo $tree;{/php};
+	$(function(){
+		$('#tree').tree({
+    		url: '/index.php/Index/setLeftTree',
+		});
+		setTimeout("setIframeUrl()", 500);
+		setTimeout("insertTreeHeader()", 300);
+		$('#tree').on('click','.tree-title',function(){
+		    if(!$(this).prev().hasClass('tree-file')) return false;
+			var str = $(this).html();
+			var url = getUrl(str);
+			go(url);
+		})
+	})
+	function getUrl(str){
+		//console.log(str);
+		var url = '/index.php/';
+		for (key in jsonData){
+			if(jsonData[key].indexOf(str) != -1){
+				url += jsonData[key].split('_')[1];
+				break;
+			}
+		}
+		//console.log(url);
+		return url;
+	}
+	function go(url){
+		$('iframe').prop('src',url);
+	}
+	//设置iframe地址 为第一个菜单
+	function setIframeUrl(){
+		var str = $('#tree').find('span.tree-file').eq(0).next().html();
+		//console.log(str);
+		var url = getUrl(str);
+		//console.log(url);
+		url && $('iframe').attr('src',url);
+	}
+	//插入菜单头部
+	function insertTreeHeader(){
+		$('#tree').prepend('<div id="tree_header"></div>');
+	}
+</script>

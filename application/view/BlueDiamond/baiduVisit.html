@@ -1,0 +1,77 @@
+{include file="Index/iframePart" /}
+<style type="text/css">
+	.h2 div.date,.h22 div.date{
+		margin-left:0px !important;
+	}
+	.h2 span.f, .h22 span.f{
+		width: 120px;
+		display: inline-block;
+	}
+	.h2{
+		padding:0px !important;
+	}
+	input[type='checkbox']{
+		width: 20px;
+		margin-right: 20px;
+	}
+</style>
+<body>
+	<div class="h1">
+		{php}echo $strr;if(isset($excelImportTime)){echo "<span class='import_time'>(最后更新时间 $excelImportTime)</span>";}{/php}
+		<div class="right">
+			<i class="icon-question-sign" id="tips" title="数据注释"></i>
+			<i class="icon-cloud-download" id="download" title="下载数据"></i>
+		</div>
+	</div>
+	<div class="h22">
+		<!-- <span class="f">主题id、活动名称查询：</span>
+		<input type="text" name="ss" id="searchStr" />
+		<span  class="btn" id="o6">查询</span> -->
+	</div>
+		<div class="h22">
+		<span class="f">端类型查询：</span>
+		<label>
+			全选
+			<input type="checkbox" id="selectAll" name="全选" />
+		</label>
+		<label>
+			PC
+			<input type="checkbox" name="searchDuanType[]" value="'PC'" />
+		</label>
+		<label>
+			智能版
+			<input type="checkbox" name="searchDuanType[]" value="'智能版'"/>
+		</label>
+		<label>
+			客户端
+			<input type="checkbox" name="searchDuanType[]" value="'客户端'" />
+		</label>
+		<label>
+			普通版
+			<input type="checkbox" name="searchDuanType[]" value="'普通版'"/>
+		</label>
+		<label>
+			PAD
+			<input type="checkbox" name="searchDuanType[]" value="'PAD'"/>
+	</div>
+	<div class="h22">
+		<span class="f">吧名查询：</span>
+		<input type="text" name="ss" id="searchId" style="width: 450px;" placeholder="格式如:33,123,45" />
+	</div>
+	<div class="h2">
+		<span class="f">时间查询：</span>
+		<!-- <span  id="o" class="btn">今天</span>
+		<span  id="o2" class="btn">昨天</span>
+		<span  id="o3" class="btn">最新7条</span>
+		<span  id="o4" class="btn active">最新30条</span> -->
+		<div  class= "date">
+			<span  class="easyui-datebox" id="from" data-options="formatter:myformatter,parser:myparser"></span>-<span  class="easyui-datebox" id="to" data-options="formatter:myformatter,parser:myparser"></span>
+		<span  id="o5" class="btn">查询</span>
+		</div>
+
+	</div>
+	<table id="dg">
+    </table>
+</body>
+</html>
+

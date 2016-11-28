@@ -1,0 +1,28 @@
+{include file="Index/iframePart" /}
+
+<body>
+    <div class="h1">
+        {php}echo $strr;if(isset($excelImportTime)){echo "<span class='import_time'>(最后更新时间 $excelImportTime)</span>";}{/php}
+        <div class="right">
+            <i class="icon-question-sign" id="tips" title="数据注释"></i>
+            <i class="icon-cloud-download" id="download" title="下载数据"></i>
+            <!-- <span id="tips">数据注释</span>
+			<span id="download">导出</span> -->
+        </div>
+    </div>
+    <div class="h2">
+        <span class="f">时间查询：</span>
+        <span id="o" class="btn">今天</span>
+        <span id="o2" class="btn">昨天</span>
+        <span id="o3" class="btn">最新7条</span>
+        <span id="o4" class="btn active">最新30条</span>
+        <div class="date">
+            <span class="easyui-datebox" id="from" data-options="formatter:myformatter,parser:myparser"></span>-<span class="easyui-datebox" id="to" data-options="formatter:myformatter,parser:myparser"></span>
+            <span id="o5" class="btn">查询</span>
+        </div>
+    </div>
+    <table id="dg">
+    </table>
+</body>
+
+</html>

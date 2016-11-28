@@ -1,0 +1,408 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>后台统计系统</title>
+    <style type="text/css">
+    @charset "utf-8";
+    /*------------// Overall //------------------*/
+    
+    body {
+        font: 12px/180% Arial, Helvetica, Verdana;
+        color: #5a5a5a;
+        margin: 0;
+        background: #FFF;
+    }
+    
+    body.login {
+        background: url(__PUBLIC__img/login_bgx.gif);
+    }
+    
+    table,
+    td {
+        font: 12px/180% Arial, "宋体", Helvetica, sans-serif, Verdana;
+        color: #58595b;
+    }
+    
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        empty-cells: show;
+    }
+    
+    th,
+    td {
+        border-collapse: collapse;
+    }
+    
+    A:link {
+        text-decoration: none;
+        color: #58595b;
+    }
+    
+    A:visited {
+        text-decoration: none;
+        color: #58595b;
+    }
+    
+    A:hover {
+        text-decoration: none;
+        color: #206fd5;
+    }
+    
+    img {
+        border: 0;
+    }
+    
+    div,
+    p,
+    img,
+    ul,
+    li,
+    form,
+    input,
+    label,
+    span,
+    dl,
+    dt,
+    dd,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        padding: 0;
+    }
+    
+    input[type="reset"]::-moz-focus-inner,
+    input[type="button"]::-moz-focus-inner,
+    input[type="submit"]::-moz-focus-inner,
+    input[type="file"] > input[type="button"]::-moz-focus-inner {
+        border: none;
+        padding: 0
+    }
+    
+    ol,
+    ul,
+    li {
+        lsist-style-type: none;
+    }
+    
+    .overz {
+        overflow: auto;
+        zoom: 1;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+    
+    .dspn {
+        display: none;
+    }
+    
+    a {
+        blr: expression(this.onFocus=this.blur())
+    }
+    /*for IE*/
+    
+    a {
+        outline: none;
+    }
+    /*for Firefox*/
+    
+    html {
+        -webkit-text-size-adjust: none;
+    }
+    /*--login--*/
+    
+    .login_logo {
+        margin-bottom: 25px;
+    }
+    
+    .login_m {
+        z-index: 1000;
+    }
+    
+    .login_boder {
+        background: url(__PUBLIC__img/login_m_bg.png) no-repeat;
+        height: 302px;
+        overflow: hidden;
+    }
+    
+    .login_padding {
+        padding: 28px 47px 20px 47px;
+    }
+    
+    .login_boder h2 {
+        color: #4f5d80;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: normal;
+        margin-bottom: 5px;
+    }
+    
+    .forget_model_h2 {
+        color: #4f5d80;
+        font-size: 12px;
+        font-weight: normal;
+        margin-bottom: 11px;
+    }
+    
+    .login_boder input.txt_input {
+        width: 295px;
+        height: 36px;
+        border: 1px solid #cad2db;
+        padding: 0 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        line-height: 36px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: #717171;
+        font-family: Arial;
+    }
+    
+    .login_boder input.txt_input:focus {
+        transition: border linear .2s, box-shadow linear .2s;
+        -moz-transition: border linear .2s, -moz-box-shadow linear .2s;
+        -webkit-transition: border linear .2s, -webkit-box-shadow linear .2s;
+        outline: none;
+        border-color: rgba(173, 173, 173.75);
+        box-shadow: 0 0 8px rgba(173, 173, 173, .5);
+        -moz-box-shadow: 0 0 8px rgba(173, 173, 173, .5);
+        -webkit-box-shadow: 0 0 8px rgba(173, 173, 173, 3);
+        border: 1px solid #6192c8;
+    }
+    
+    .login_boder p.forgot {
+        font-size: 11px;
+        text-align: right;
+        margin-bottom: 15px;
+    }
+    
+    .login_boder p.forgot a,
+    .login_boder p.forgot a:visited {
+        color: #8c8e91;
+    }
+    
+    .login_boder p.forgot a:hover {
+        color: #206fd5;
+    }
+    
+    .rem_sub input.sub_button {
+        margin-top: 20px;
+        float: right;
+        width: 122px;
+        height: 32px;
+        background: url(__PUBLIC__img/site_bg.png) no-repeat -153px -850px;
+        border: none;
+        color: #FFF;
+        padding-bottom: 2px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    
+    .rem_sub input.sub_buttons {
+        float: left;
+        width: 122px;
+        height: 32px;
+        background: url(__PUBLIC__img/site_bg.png) no-repeat -153px -850px;
+        border: none;
+        color: #FFF;
+        padding-bottom: 2px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    
+    .rem_sub input.sub_buttons:hover {
+        background-position: -153px -882px;
+        cursor: pointer;
+    }
+    
+    .rem_sub input.sub_button:hover {
+        background-position: -153px -882px;
+        cursor: pointer;
+    }
+    
+    .rem_sub .rem_sub_l {
+        float: left;
+        font-size: 12px;
+        height: 33px;
+        line-height: 33px;
+    }
+    
+    .rem_sub input#checkbox {
+        margin-right: 5px;
+        vertical-align: middle;
+    }
+    </style>
+</head>
+
+<body class="login">
+    <div class="login_m" id="box" style="position:absolute;">
+        <div class="login_logo">
+            <!-- <img src="images/logo.png" width="196" height="46"></div>
+        -->
+            <div class="login_boder">
+                <form action="/index.php/Login/loginGo" method="post">
+                    <div class="login_padding">
+                        <h2>用户名</h2>
+                        <label>
+                            <input name="name" type="text" id="username" class="txt_input txt_input2" onfocus="if (value ==&#39;用户名&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;用户名&#39;}" value="用户名">
+                        </label>
+                        <h2>密码</h2>
+                        <label>
+                            <input type="password" name="password" id="userpwd" class="txt_input" onfocus="if (value ==&#39;******&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;******&#39;}" value="">
+                        </label>
+                        <p class="forgot">
+                            <!-- <a href="javascript:void(0);">忘记密码?</a> -->
+                        </p>
+                        <div class="rem_sub">
+                            <!-- <div class="rem_sub_l">
+                            <input type="checkbox" name="checkbox" id="save_me">
+                            <label for="checkbox">记住</label>
+                        </div> -->
+                            <label>
+                                <input type="submit" class="sub_button" id="button" value="登录" style="opacity: 0.7;">
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--login_boder end-->
+        </div>
+    </div>
+    <!--login_m end-->
+    <!--  <p align="center">数据统计系统</p>
+-->
+    <script type="text/javascript">
+    function box() {
+        //获取DIV为‘box’的盒子
+        var oBox = document.getElementById('box');
+        //获取元素自身的宽度
+        var L1 = oBox.offsetWidth;
+        //获取元素自身的高度
+        var H1 = oBox.offsetHeight;
+        //获取实际页面的left值。（页面宽度减去元素自身宽度/2）
+        var Left = (document.documentElement.clientWidth - L1) / 2;
+        //获取实际页面的top值。（页面宽度减去元素自身高度/2）
+        var top = (document.documentElement.clientHeight - H1) / 2 - 20;
+        oBox.style.left = Left + 'px';
+        oBox.style.top = top + 'px';
+    }
+    window.onload = function() {
+
+    }
+    window.onresize = function() {
+        //当浏览器页面发生改变时，DIV随着页面的改变居中
+        box();
+    }
+    </script>
+    <script type="text/javascript" src="__PUBLIC__login_background/canvas-particle.js"></script>
+    <script>
+    ;
+    !(function(a) {
+        var points = [],
+            obj = document.createElement("canvas");
+        config = a.lala || {
+                speed: 6,
+                strokeColor: "100,200,500",
+                pointColor: "rgb(121, 162, 185)",
+                pointNum: 200,
+                pointLength: 2,
+            },
+            obj.width = window.innerWeight || document.documentElement.clientWidth || document.body.clientWidth,
+            obj.height = window.innerWeight || document.documentElement.clientHeight || document.body.clientHeight,
+            obj.style = "position: absolute; top: 0; left: 0; z-index: 999;",
+            objFoo = obj.getContext("2d");
+
+        document.getElementsByTagName('body')[0].appendChild(obj);
+
+        function run() {
+            objFoo.clearRect(0, 0, obj.width, obj.height);
+            objFoo.beginPath();
+            objFoo.fillStyle = config.pointColor;
+
+            for (var i = 0, len = config.pointNum; i < len; i++) {
+                var foo = [];
+                if (points.length != config.pointNum) {
+                    foo['w'] = Math.floor(Math.random() * obj.width);
+                    foo['h'] = Math.floor(Math.random() * obj.height);
+                    foo['vw'] = (0.5 - Math.random()) * config.speed;
+                    foo['vh'] = (0.5 - Math.random()) * config.speed;
+                } else {
+                    foo['w'] = points[i]['w'] + points[i]['vw'];
+                    foo['h'] = points[i]['h'] + points[i]['vh'];
+                    foo['vw'] = foo['w'] < 0 || foo['w'] > obj.width ? -points[i]['vw'] : points[i]['vw'];
+                    foo['vh'] = foo['h'] < 0 || foo['h'] > obj.height ? -points[i]['vh'] : points[i]['vh'];
+                }
+                points[i] = foo;
+                objFoo.fillRect(foo['w'], foo['h'], config.pointLength, config.pointLength);
+            }
+            drawStroke();
+            objFoo.closePath();
+        }
+
+        function drawStroke() {
+            points.forEach(function(x, xx) {
+                points.forEach(function(y) {
+                    var length = config.pointLength / 2;
+                    var x1 = x['w'] + length;
+                    var y1 = x['h'] + length;
+                    var x2 = y['w'] + length;
+                    var y2 = y['h'] + length;
+                    var dist = Math.round(x1 - x2) * Math.round(x1 - x2) + Math.round(y1 - y2) * Math.round(y1 - y2);
+                    var foo = 1 - dist / 5000;
+                    objFoo.strokeStyle = "rgba(" + config.strokeColor + "," + foo + ")";
+                    if (dist <= 5000) { //5000  0 -  2000 0.3      1000 0.4
+                        objFoo.lineWidth = 0.4 - dist / 20000;
+                        objFoo.beginPath();
+                        objFoo.moveTo(x1, y1);
+                        objFoo.lineTo(x2, y2);
+                        objFoo.stroke();
+                    }
+                })
+                if (config.mouse) {
+                    var x1 = x['w'] + length;
+                    var y1 = x['h'] + length;
+                    var dist = Math.round(x1 - config.mouse.x) * Math.round(x1 - config.mouse.x) + Math.round(y1 - config.mouse.y) * Math.round(y1 - config.mouse.y);
+                    var foo = 1 - dist / 5000;
+                    objFoo.strokeStyle = "rgba(" + config.strokeColor + "," + foo + ")";
+                    if (dist <= 5000) { //5000  0 -  2000 0.3      1000 0.4
+                        objFoo.lineWidth = 0.4 - dist / 20000;
+                        objFoo.beginPath();
+                        objFoo.moveTo(config.mouse.x, config.mouse.y);
+                        objFoo.lineTo(x1, y1);
+                        objFoo.stroke();
+                        //改变点运动方向
+                        points[xx]['vw'] = (config.mouse.x - x1) / 50 * config.speed;
+                        points[xx]['vh'] = (config.mouse.y - y1) / 50 * config.speed;
+
+                    }
+                }
+            })
+        }
+        document.onmousemove = function(e) {
+            var event = e || window.event;
+            config.mouse = {
+                x: event.clientX,
+                y: event.clientY
+            }
+        }
+        document.onmouseleave = function() {
+            config.mouse = undefined;
+        }
+        window.onload = function() {
+            box();
+            setInterval(function() {
+                run();
+            }, 40);
+        }
+    }(window))
+    </script>
+</body>
+
+</html>

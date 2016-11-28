@@ -1,0 +1,46 @@
+{include file="Import/importResultHead" /}
+<body>
+{php}
+if($returnJson){
+    $returnArr = json_decode($returnJson,true);
+}
+{/php}
+    <div class="tableHead">{php}echo $returnArr['treeName']; {/php}</div>
+    <table class="table table-bordered">
+        <caption>更新数据(<span class="num">{php}echo $returnArr['updateNum']; {/php}</span>)条</caption>
+        <tbody>
+        {php}
+        $updateHtml = '';
+        foreach ($returnArr['updateArr'] as $key => $value) {
+            $updateHtml = '<tr>';
+            if($value){
+                foreach($value as $k => $v){
+                    $updateHtml .= '<td>'.$v.'</td>';
+                }
+            }
+            $updateHtml .= '</tr>';
+            echo $updateHtml;
+        }
+        {/php}
+        </tbody>
+    </table>
+        <table class="table table-bordered">
+        <caption>插入数据(<span class="num">{php}echo $returnArr['insertNum']; {/php}</span>)条</caption>
+        <tbody>
+        {php}
+        $insertHtml = '';
+        foreach ($returnArr['insertArr'] as $key => $value) {
+            $insertHtml = '<tr>';
+            if($value){
+                foreach($value as $k => $v){
+                    $insertHtml .= '<td>'.$v.'</td>';
+                }
+            }
+            $insertHtml .= '</tr>';
+            echo $insertHtml;
+        }
+        {/php}
+        </tbody>
+    </table>
+</body>
+</html>

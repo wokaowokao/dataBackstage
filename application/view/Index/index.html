@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>数据后台</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__easyui/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__easyui/demo.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__font/css/font-awesome.min.css">
+	<script type="text/javascript" src="__PUBLIC__easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__layer/layer.js"></script>
+
+	<style type="text/css">
+		/*重写一下 公用layer eaayui的css样式*/
+		.layui-layer-content{
+			padding:10px 20px 20px 20px;
+			line-height: 19px;
+			color:#777;
+		}
+		.panel-header, .panel-body{
+			border-color: #438eb9 !important;
+		}
+		.textbox{
+			border: 1px solid #438eb9 !important;
+		}
+		.layui-layer-lan .layui-layer-title{
+			font-size:17px;
+			line-height: 45px;
+		}
+		._layer_span{
+			color:#e28822;
+		}
+		.layui-layer-title{
+			overflow: visible;
+		}
+		.tree-node{
+			height: 20px  !important;
+		}
+		.tree-title{
+			font-size: 15px;
+		}
+		.panel-icon, .panel-tool{
+			margin-top: -8px !important;
+		}
+
+	</style>
+	<style type="text/css">
+	/*公用样式*/
+	.h1{
+		font-size:20px;
+		font-weight: bold;
+		color:#438eb9;
+		margin-bottom: 20px;
+	}
+	.h1 span{
+		font-size:12px;
+		color:#95B8A3;
+		cursor: pointer;
+	}
+	.right{
+		float: right;
+	}
+	.right a{
+		padding-left:30px;
+		font-size: 12px;
+	}
+	.right i{
+		cursor: pointer;
+		position: absolute;
+		font-size:23px;
+	}
+	.right i:nth-child(1){
+		right: 70px;
+	}
+	.right i:nth-child(2){
+		right: 30px;
+	}
+	#tips{
+
+	}
+	#download{
+
+	}
+	.right i:hover{
+		font-size:30px;
+	}
+	.h2{
+		margin-bottom:15px;
+		padding-left:5px;
+	}
+	.h2 input ,.h22 input {
+	    background-color: #fff;
+	    border: 1px solid #438eb9;
+	    border-radius: 5px;
+	    display: inline-block;
+	    margin: 0;
+	    overflow: hidden;
+	    padding: 3px 5px;
+	    position: relative;
+	    vertical-align: middle;
+	    white-space: nowrap;
+	    width: 200px;
+	}
+
+	.h2 span.btn,.h22 span.btn{
+		cursor: pointer;
+		background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    	border-style: solid;
+    	border-width: 1px;
+    	line-height: 36px;
+		border-color: #438eb9;
+		border-radius: 4px;
+		color:#438eb9;
+		padding:3px;
+		margin-left: 10px;
+		text-align: center;
+	}
+	.h2 span#from,.h22 span#from{
+		margin-left: 20px;
+	}
+	.h2 span.btn:hover,.h22 span.btn:hover{
+		background-color: #438eb9;
+    	color: rgba(255, 255, 255, 0.9);
+	}
+	.h2 div.date,.h22 div.date{
+		display: inline-block;
+		margin-left:80px;
+	}
+	.h2 a,.h22 a{
+		padding-right:15px;
+	}
+	.h2 .active,.h22 .active{
+		background-color: #438eb9 !important;
+    	color: rgba(255, 255, 255, 0.9)!important;
+	}
+	.field_active{
+		color:#438eb9;
+	}
+
+</style>
+<style type="text/css">
+	#iframeDiv{
+		/*border:1px  solid #438eb9;*/
+		margin-left:250px;
+		margin-top:45px;
+		max-height: 1000px;
+	}
+	iframe{
+		width:100%;
+	}
+	iframe body,html{
+		margin:0px;
+		padding:0px;
+		height: 100%;
+	}
+	body{
+		height: 100%;
+		padding:0px;
+	}
+	#tree{
+		border: 1px  solid #438eb9;
+	}
+	#header{
+		height:50px;
+		width:100%;
+		background-color:#438eb9;
+		font-size:13px;
+	}
+	.header_right{
+		font-size: 12px;
+		float: right;
+		margin-right: 30px;
+		background: #fff;
+    	border-color: #438eb9;
+    	border-radius: 4px;
+    	border-style: solid;
+    	border-width: 1px;
+    	color: #438eb9;
+    	cursor: pointer;
+    	margin-left: 10px;
+    	width: 50px;
+    	text-align: center;
+    	margin-top:8px;
+    	padding-top:2px;
+    	padding-bottom: 2px;
+	}
+	.header_right:hover{
+		background: #438eb9;
+		color: #fff;
+	}
+	.header_left{
+		font-size: 20px;
+		font-weight: bold;
+		color:#fff;
+		padding-left:30px;
+		display: inline-block;
+		margin-top:8px;
+	}
+	.header_l_right{
+		color: #fff;
+		float: right;
+		line-height: 40px;
+	}
+</style>
+</head>
+<body>
+<div class="easyui-layout" style="width:100%;height:100%;">
+        <div id="header" data-options="region:'north',split:true">
+        	<span class="header_left">数据后台</span>
+        	<!-- &nbsp;&nbsp;&nbsp;&nbsp;欢迎用户：{$Think.session.username}&nbsp;回来！&nbsp;&nbsp;&nbsp;&nbsp;时间：{:date('Y-m-d H:i:s')} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+        	<span class="header_right" id="loginOut">退出</span>
+        	<span class="header_l_right">欢迎用户：{$Think.session.username}&nbsp;回来！&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </div>
+        {include file="Index/tree" /}
+        <div id="iframeDiv">
+                <iframe src="" id="iframe" frameborder=no  style="display:block;"></iframe>
+        </div>
+        <script type="text/javascript">
+        	//设置iframe的高度 当初始化和页面大小变化是 iframe自适应
+			function changeFrameHeight(){
+    		//console.log('dd');
+        		var ifm= document.getElementById("iframe");
+        		ifm.height=document.documentElement.clientHeight-50;
+    		}
+    		window.onresize=function(){
+         		changeFrameHeight();
+    		}
+    		$(function(){
+    			var ifm= document.getElementById("iframe");
+        		ifm.height=document.documentElement.clientHeight-50;
+        		$('#loginOut').click(function(){
+        			location.href = '/index.php/Loginout/loginout';
+        		})
+    		})
+		</script>
+        </div>
+
+</body>
+</html>

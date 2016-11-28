@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>数据后台</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__easyui/demo.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__font/css/font-awesome.min.css">
+    <script type="text/javascript" src="__PUBLIC__easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__layer/layer.js"></script>
+<style type="text/css">
+    .h1{
+        font-size: 20px;
+        font-weight: bold;
+        color: #438eb9;
+    }
+    .h1 span{
+        font-size:12px;
+        color:#438eb9;
+        cursor: pointer;
+    }
+    .right{
+        float: right;
+    }
+    .right a{
+        padding-left:30px;
+        font-size: 12px;
+    }
+    .h2{
+        padding-left:5px;
+    }
+    .h2 a{
+        padding-right:15px;
+    }
+    #spanF{
+        margin-top:25px;
+    }
+    #spanF a{
+        margin-right: 10px;
+        color: #555;
+        border: 1px solid #555;
+        border-radius: 5px;
+        padding: 4px 8px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    #spanF a:hover{
+         color: #438eb9;
+         border: 1px solid #438eb9;
+    }
+    #spanF .icon{
+        font-size: 18px;
+    }
+    form{
+    	display: none;
+    }
+</style>
+</head>
+<body>
+<div class="h1">
+    {php}echo $strr;{/php}
+    <!-- <div class="right">
+        <span id="tips">数据注释</span>
+        <span id="download">导出</span>
+    </div> -->
+</div>
+<div id="spanF">
+<!-- <a id="excel1" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'">常规数据导入</a>
+<a id="excel2" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'">贴吧活动数据导入</a>
+<a id="excel3" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'">百度访问端数据导入</a>
+<a id="excel4" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'">贴吧数据总汇</a> -->
+<a id="excel1">
+        <span class="icon-cloud-upload icon">&nbsp;</span>
+        <span class="">常规数据导入</span>
+</a>
+<a id="excel2">
+        <span class="icon-cloud-upload icon">&nbsp;</span>
+        <span class="">贴吧活动数据导入</span>
+</a>
+<a id="excel3">
+        <span class="icon-cloud-upload icon">&nbsp;</span>
+        <span class="">百度访问端数据导入</span>
+</a>
+<a id="excel4">
+        <span class="icon-cloud-upload icon">&nbsp;</span>
+        <span class="">贴吧数据总汇数据导入</span>
+</a>
+<a id="excel5">
+        <span class="icon-cloud-upload icon">&nbsp;</span>
+        <span class="">蓝钻数据池数据导入</span>
+</a>
+    <form enctype="multipart/form-data" action="/index.php/ExcelImport/upExcel" id="form1" method='post' style="margin-top:200px;">
+    	<input type="file" class="up" name="excel" />
+        <input type="hidden" name="type" value="conventional"/>
+    	<input type="submit" name="">
+    </form>
+    <form  enctype="multipart/form-data" action="/index.php/ExcelImport/upExcel" id="form2" method='post' style="margin-top:200px;">
+    	<input type="file" class="up" name="excel" />
+        <input type="hidden" name="type" value="tieba"/>
+    	<input type="submit" name="">
+    </form>
+    <form enctype="multipart/form-data" action="/index.php/ExcelImport/upExcel" id="form3" method='post' style="margin-top:200px;">
+    	<input type="file" class="up" name="excel" />
+        <input type="hidden" name="type" value="baidu"/>
+    	<input type="submit" name="">
+    </form>
+    <form enctype="multipart/form-data" action="/index.php/ExcelImport/upExcel" id="form4" method='post' style="margin-top:200px;">
+        <input type="file" class="up" name="excel" />
+        <input type="hidden" name="type" value="collect"/>
+        <input type="submit" name="">
+    </form>
+    <form enctype="multipart/form-data" action="/index.php/ExcelImport/upExcel" id="form5" method='post' style="margin-top:200px;">
+        <input type="file" class="up" name="excel" />
+        <input type="hidden" name="type" value="pool"/>
+        <input type="submit" name="">
+    </form>
+ 	<script type="text/javascript">
+ 		$(function(){
+ 			$('#excel1').click(function(){
+ 				$("#form1 .up").trigger("click");
+ 			});
+ 			$('#excel2').click(function(){
+ 				$("#form2 .up").trigger("click");
+ 			});
+ 			$('#excel3').click(function(){
+ 				$("#form3 .up").trigger("click");
+ 			});
+            $('#excel4').click(function(){
+                $("#form4 .up").trigger("click");
+            });
+             $('#excel5').click(function(){
+                $("#form5 .up").trigger("click");
+            });
+ 			$('.up').change(function(){
+                layer.load(1, {
+                    shade: [0.8,'#fff'] //0.1透明度的白色背景
+                });
+ 				$(this).parents('form').submit();
+ 			});
+ 		})
+ 	</script>
+</div>
+
+</body>
+</html>

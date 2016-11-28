@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>数据后台</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__easyui/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__easyui/demo.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__font/css/font-awesome.min.css">
+	<script type="text/javascript" src="__PUBLIC__easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__layer/layer.js"></script>
+<style type="text/css">
+	.h1{
+		font-size: 20px;
+    	font-weight: bold;
+    	color: #438eb9;
+    }
+	.h1 span{
+		font-size:12px;
+		color:#95B8A3;
+		cursor: pointer;
+	}
+	.right{
+		float: right;
+	}
+	.right a{
+		padding-left:30px;
+		font-size: 12px;
+	}
+	.h2{
+		margin-top:20px;
+		margin-bottom:15px;
+		padding-left:5px;
+	}
+	.h2 a{
+		padding-right:15px;
+	}
+	.active{
+		color:#e28822;
+	}
+	.do{
+		padding-right: 10px;
+		color:#e28822;
+		cursor: pointer;
+	}
+	.hidden{
+		display: none;
+	}
+	.h2 input {
+    	background-color: #fff;
+    	border: 1px solid #438eb9;
+    	border-radius: 5px;
+    	display: inline-block;
+    	margin: 0;
+    	overflow: hidden;
+    	padding: 3px 2px;
+    	position: relative;
+    	vertical-align: middle;
+    	white-space: nowrap;
+    	width: 200px;
+	}
+	.h2 span.btn {
+    	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    	border-color: #438eb9;
+    	border-radius: 4px;
+    	border-style: solid;
+    	border-width: 1px;
+    	color: #438eb9;
+    	cursor: pointer;
+    	line-height: 36px;
+    	margin-left: 10px;
+    	padding: 3px;
+    	text-align: center;
+	}
+	.h2 span.btn:hover {
+    	background-color: #438eb9;
+    	color: rgba(255, 255, 255, 0.9);
+	}
+	#changeForm,#addForm{
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	#addFormSub,#changeFormSub{
+		background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    	border-color: #438eb9;
+    	border-radius: 4px;
+    	border-style: solid;
+    	border-width: 1px;
+    	color: #438eb9;
+    	cursor: pointer;
+    	margin-left: 10px;
+    	margin-top: 10px;
+    	text-align: center;
+    	float: right;
+	}
+	#addFormSub:hover,#changeFormSub:hover{
+		background-color: #438eb9;
+    	color: rgba(255, 255, 255, 0.9);
+	}
+	._layer_title{
+		font-weight: bold;
+		color: #438eb9;
+		font-size:15px;
+	}
+	._layer_a_title{
+		font-weight: bold;
+		font-size: 14px;
+		display: inline-block;
+		margin-top: 3px;
+		margin-bottom: 3px;
+		color: #438eb9;
+	}
+	._layer_b_title{
+		display: inline-block;
+		margin-top: 2px;
+		margin-bottom: 2px;
+		color: #438eb9;
+	}
+	#userInput{
+		background-color: #fff;
+    	border: 1px solid #438eb9;
+    	border-radius: 5px;
+    	display: inline-block;
+    	padding-left: 5px;
+	}
+</style>
+<script type="text/javascript">
+	//全局变量 用于注释 和 数据字段显示
+	var _colums = {php}echo $_colums;{/php};
+	var _title = '{php}echo $strr;{/php}';
+</script>
+<script type="text/javascript" src="__PUBLIC__src/{php}echo $f_name;{/php}.js{php}echo '?='.time();{/php}"></script>
+</head>
+<body>
+<div class="h1">
+	{php}echo $strr;{/php}
+	<div class="right">
+		<i></i>
+	<i class="icon-plus" id="add" title="添加用户"></i>
+		<!-- <span id="add">添加用户</span> -->
+		<!-- <span id="download">导出</span>
+	-->
+</div>
+</div>
+<div class="h2">
+<span style="font-size:16px;">用户名：</span>
+<input type="text" name="user" id="searchStr">
+<span  id="search" class="btn">查询</span>
+</div>
+<table id="dg"></table>
+<div id='initRules' class="hidden">
+	<form action="/index.php/User/initRules" id="changeForm" method="post">
+	<input type="hidden" value="" name="uid" />
+			<div>
+			<span class="_layer_a_title">权限控制：</span>
+			<br>
+			<span class="_layer_b_title">管理员：</span>
+			<br>
+			<label>
+				<input type="checkbox" id="wokao" name="rules[]" value="666" />
+				超管权限(显示所有菜单)
+			</label>
+			<br>
+			<span class="_layer_b_title">数据导入：</span>
+			<br>
+			<label>
+				<input type="checkbox" name="rules[]" value="1" />
+				数据导入
+			</label>
+			<br>
+			<span class="_layer_b_title">兑一兑：</span>
+			<br>
+			<label>
+				<input type="checkbox" name="rules[]" value="2" />
+				行为和流量
+			</label>
+			<!-- <label>
+				<input type="checkbox" name="rules[]" value="3" />
+				订单详情
+			</label> -->
+			<label>
+				<input type="checkbox" name="rules[]" value="3" />
+				访问时长
+			</label>
+			<br>
+			<span class="_layer_b_title">蓝钻吧：</span>
+			<br>
+			{php}
+				echo $blueTreeHtml;
+			{/php}
+		</div>
+		<input type="submit" id="changeFormSub" value="提交"/>
+	</form>
+</div>
+<div id="addHtml" class="hidden">
+	<form action="/index.php/User/addUser" id="addForm" method="post">
+		<div>
+		<span class="_layer_a_title">用户名:</span>
+			<input type="text" name="name" id="userInput" value="" />
+		</div>
+		<div>
+		<span class="_layer_a_title">所属部门:</span>
+			<select name="dept">
+				<option value="超级管理员">超级管理员</option>
+				<option value="技术">技术</option>
+				<option value="运营-兑一兑">运营-兑一兑</option>
+				<option value="运营-蓝钻吧">运营-蓝钻吧</option>
+				<option value="测试">测试</option>
+				<option value="产品">产品</option>
+				<option value="数据">数据</option>
+			</select>
+		</div>
+		<div>
+		<span class="_layer_a_title">权限控制:</span>
+			<br>
+			<span class="_layer_b_title">管理员：</span>
+			<br>
+			<label>
+				<input type="checkbox" name="rules[]" value="666" />
+				超管权限(显示所有菜单)
+			</label>
+			<br>
+			<span class="_layer_b_title">数据导入：</span>
+			<br>
+			<label>
+				<input type="checkbox" name="rules[]" value="1" />
+				数据导入
+			</label>
+			<br>
+			<span class="_layer_b_title">兑一兑：</span>
+			<br>
+			<label>
+				<input type="checkbox" name="rules[]" value="2" />
+				行为和流量
+			</label>
+			<!-- <label>
+				<input type="checkbox" name="rules[]" value="3" />
+				订单详情
+			</label> -->
+			<label>
+				<input type="checkbox" name="rules[]" value="3" />
+				访问时长
+			</label>
+			<br>
+			<span class="_layer_b_title">蓝钻吧：</span>
+			<br>
+			{php}
+				echo $blueTreeHtml;
+			{/php}
+		</div>
+		<input type="submit" id="addFormSub"  value="提交"/>
+	</form>
+</div>
+</body>
+</html>
